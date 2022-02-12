@@ -173,7 +173,7 @@ dependencies = [
  "anchor-lang",
  "solana-program",
  "spl-associated-token-account",
- "spl-token 3.3.0",
+ "spl-token",
 ]
 
 [[package]]
@@ -1157,16 +1157,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "393e2240d521c3dd770806bff25c2c00d761ac962be106e14e22dd912007f428"
 dependencies = [
  "solana-program",
- "spl-token 3.3.0",
-]
-
-[[package]]
-name = "spl-token"
-version = "0.1.0"
-dependencies = [
- "anchor-lang",
- "anchor-spl",
- "spl-token 3.3.0",
+ "spl-token",
 ]
 
 [[package]]
@@ -1181,6 +1172,15 @@ dependencies = [
  "num_enum",
  "solana-program",
  "thiserror",
+]
+
+[[package]]
+name = "spltoken"
+version = "0.1.0"
+dependencies = [
+ "anchor-lang",
+ "anchor-spl",
+ "spl-token",
 ]
 
 [[package]]

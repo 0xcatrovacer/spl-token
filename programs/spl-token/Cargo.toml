@@ -1,12 +1,12 @@
 [package]
-name = "spl-token"
+name = "spltoken"
 version = "0.1.0"
 description = "Created with Anchor"
 edition = "2018"
 
 [lib]
 crate-type = ["cdylib", "lib"]
-name = "spl_token"
+name = "spltoken"
 
 [features]
 no-entrypoint = []
