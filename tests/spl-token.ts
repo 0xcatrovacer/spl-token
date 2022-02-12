@@ -1,17 +1,14 @@
-import * as anchor from '@project-serum/anchor';
-import { Program } from '@project-serum/anchor';
-import { SplToken } from '../target/types/spl_token';
+import * as anchor from "@project-serum/anchor";
+import { Program } from "@project-serum/anchor";
+import { Spltoken } from "../target/types/spltoken";
 
-describe('spl-token', () => {
+describe("spltoken", () => {
+    anchor.setProvider(anchor.Provider.env());
 
-  // Configure the client to use the local cluster.
-  anchor.setProvider(anchor.Provider.env());
+    const program = anchor.workspace.Spltoken as Program<Spltoken>;
 
-  const program = anchor.workspace.SplToken as Program<SplToken>;
-
-  it('Is initialized!', async () => {
-    // Add your test here.
-    const tx = await program.rpc.initialize({});
-    console.log("Your transaction signature", tx);
-  });
+    it("Is initialized!", async () => {
+        const tx = await program.rpc.proxyTransfer({});
+        console.log("Your transaction signature", tx);
+    });
 });

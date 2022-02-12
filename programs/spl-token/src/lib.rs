@@ -1,7 +1,7 @@
 use anchor_lang::prelude::*;
 use anchor_spl::token::{self, Burn, MintTo, SetAuthority, Transfer};
 
-declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS");
+declare_id!("7gAmGKpULv13sfCWchTjx1tbgFxshrN334yyQHM8xpK8");
 
 #[program]
 pub mod spltoken {
