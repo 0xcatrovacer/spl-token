@@ -74,3 +74,27 @@ pub struct ProxySetAuthority<'info> {
     pub account_or_mint: AccountInfo<'info>,
     pub token_program: AccountInfo<'info>,
 }
+
+impl <'a, 'b, 'c, 'info> From<&mut ProxyTransfer<'info>>
+for CpiContext<'a, 'b, 'c, 'info, Transfer<'info>>
+{
+
+}
+
+impl <'a, 'b, 'c, 'info> From<&mut ProxyMintTo<'info>>
+for CpiContext<'a, 'b, 'c, 'info, MintTo<'info>>
+{
+
+}
+
+impl <'a, 'b, 'c, 'info> From<&mut ProxyBurn<'info>>
+for CpiContext<'a, 'b, 'c, 'info, Burn<'info>>
+{
+
+}
+
+impl <'a, 'b, 'c, 'info> From<&mut ProxySetAuthority<'info>>
+for CpiContext<'a, 'b, 'c, 'info, SetAuthority<'info>>
+{
+
+}
