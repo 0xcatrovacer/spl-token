@@ -16,7 +16,7 @@ pub mod spl_token {
     }
 
     pub fn proxy_burn(ctx: Context<ProxyBurn>, amount: u64) -> ProgramResult {
-        token::burn(ctx.accounts.into, amount)
+        token::burn(ctx.accounts.into(), amount)
     }
 
     pub fn proxy_set_authority(ctx: Context<ProxySetAuthority>, authority_type: AuthorityType, new_authority: Option<Pubkey>) -> ProgramResult {
@@ -25,5 +25,52 @@ pub mod spl_token {
 
 }
 
+#[derive(AnchorSerialize, AnchorDeserialize)]
+pub enum AuthorityType {
+    MintTokens,
+    FreezeAccount,
+    AccountOwner,
+    CloseAccount
+}
+
 #[derive(Accounts)]
-pub struct Initialize {}
+pub struct ProxyMintTo<'info> {
+    #[account(signer)]
+    pub authority: AccountInfo<'info>,
+    #[account(mut)]
+    pub mint: AccountInfo<'info>,
+    #[account(mut)]
+    pub to: AccountInfo<'info>,
+    pub token_program: AccountInfo<'info>,
+}
+
+#[derive(Accounts)]
+pub struct ProxyTransfer<'info> {
+    #[account(signer)]
+    pub authority: AccountInfo<'info>,
+    #[account(mut)]
+    pub from: AccountInfo<'info>,
+    #[account(mut)]
+    pub to: AccountInfo<'info>,
+    pub token_program: AccountInfo<'info>,
+}
+
+#[derive(Accounts)]
+pub struct ProxyBurn<'info> {
+    #[account(signer)]
+    pub authority: AccountInfo<'info>,
+    #[account(mut)]
+    pub mint: AccountInfo<'info>,
+    #[account(mut)]
+    pub to: AccountInfo<'info>,
+    pub token_program: AccountInfo<'info>,
+}
+
+#[derive(Accounts)]
+pub struct ProxySetAuthority<'info> {
+    #[account(signer)]
+    pub current_authority: AccountInfo<'info>,
+    #[account(mut)]
+    pub account_or_mint: AccountInfo<'info>,
+    pub token_program: AccountInfo<'info>,
+}
